@@ -11,7 +11,7 @@
       <v-btn text :class="$style.login">ログイン</v-btn>
     </v-app-bar>
     <v-main>
-      <v-container>
+      <v-container fluid :class="$style.container">
         <nuxt />
       </v-container>
     </v-main>
@@ -25,6 +25,7 @@
 .app_title {
   color: #fff;
   font-weight: bold;
+  font-size: 24px;
 }
 .register {
   border: 2px solid #fff;
@@ -33,5 +34,9 @@
 }
 .login {
   font-weight: bold;
+}
+.container {
+  background: #ecf6fe;
+  height: 100%;
 }
 </style>
