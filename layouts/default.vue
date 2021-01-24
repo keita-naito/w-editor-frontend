@@ -10,7 +10,7 @@
 
       <template v-if="isSignedIn">
         <v-btn text :class="$style.register">投稿する</v-btn>
-        <v-btn text :class="$style.login">ログアウト</v-btn>
+        <v-btn text :class="$style.login" @click="signOut">ログアウト</v-btn>
       </template>
       <template v-else>
         <v-btn text :class="$style.register">ユーザー登録</v-btn>
@@ -30,6 +30,14 @@ export default {
   computed: {
     isSignedIn() {
       return this.$store.getters['user/isSignedIn']
+    },
+  },
+
+  methods: {
+    async signOut() {
+      await this.$store.dispatch('user/signOut').then(() => {
+        this.$router.push('/sign_in')
+      })
     },
   },
 }
