@@ -33,6 +33,8 @@
 
 <script>
 export default {
+  middleware: ['authed'],
+
   data() {
     return {
       id: '',
