@@ -11,6 +11,15 @@
           />
           <v-spacer></v-spacer>
           <template v-if="isShowBtn">
+            <v-btn
+              :class="$style.editBtn"
+              text
+              fab
+              small
+              @click="moveToEditArticlePage(article.id)"
+            >
+              <v-icon color="#3085DE">fas fa-pencil-alt</v-icon>
+            </v-btn>
             <v-btn text fab small @click="deleteArticle">
               <v-icon color="#3085DE">fas fa-trash-alt</v-icon>
             </v-btn>
@@ -58,6 +67,10 @@ export default {
   },
 
   methods: {
+    moveToEditArticlePage(id) {
+      this.$router.push(`/articles/${id}/edit`)
+    },
+
     async deleteArticle() {
       const result = confirm('この記事を削除してもよろしいですか？')
       if (result) {
@@ -103,5 +116,8 @@ export default {
 .article_body {
   width: 100%;
   white-space: pre-wrap;
+}
+.editBtn {
+  margin-right: 12px;
 }
 </style>
