@@ -19,19 +19,17 @@ export const mutations = {
 
 export const actions = {
   async fetchArticles({ commit }) {
-    await this.$axios.get('api/v1/articles').then((response) => {
-      const data = response.data
+    const response = await this.$axios.get('api/v1/articles')
+    const data = response.data
 
-      commit('setArticles', data)
-    })
+    commit('setArticles', data)
   },
 
   async fetchArticle({ commit }, id) {
-    await this.$axios.get(`api/v1/articles/${id}`).then((response) => {
-      const data = response.data
+    const response = await this.$axios.get(`api/v1/articles/${id}`)
+    const data = response.data
 
-      commit('setArticle', data)
-    })
+    commit('setArticle', data)
   },
 
   async createArticle(_, params) {
