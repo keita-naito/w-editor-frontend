@@ -1,5 +1,5 @@
 import createPersistedState from 'vuex-persistedstate'
-import * as Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import cookie from 'cookie'
 
 const COOKIE_TARGET_STORE = ['user']
@@ -13,9 +13,9 @@ export default ({ store, req, isDev }) => {
         process.client
           ? Cookies.get(key)
           : cookie.parse(req.headers.cookie)[key],
-      setItem: (key) => {
-        const cookie = Cookies.set(key, {
-          expires: 14,
+      setItem: (key, value) => {
+        const cookie = Cookies.set(key, value, {
+          expires: 14, // 14日間有効
           secure: !isDev,
           sameSite: 'lax',
         })
